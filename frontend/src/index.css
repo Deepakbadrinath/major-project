@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #F6F8FB;
+    --card-bg: #FFFFFF;
+    --primary-teal: #0D9488;
+    --deep-teal: #0F766E;
+    --text-primary: #172033;
+    --text-secondary: #697586;
+    --border-color: #E6EAF0;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    border: none;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Isometric 3D Room Styles */
+.isometric-stage {
+  perspective: 1200px;
+}
+
+.room-container {
+  transform: rotateX(44deg) rotateZ(-36deg) scale(0.9);
+  transform-style: preserve-3d;
+  box-shadow: 20px 40px 60px rgba(15, 23, 42, 0.18);
+  transition: transform 0.5s ease;
+}
+
+.desk-glow-active {
+  box-shadow: 0 0 12px 2px rgba(13, 148, 136, 0.6);
+}
+
+.desk-glow-expiring {
+  box-shadow: 0 0 12px 2px rgba(245, 158, 11, 0.6);
+}
+
+/* Fan spinning animation */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 2.5s linear infinite;
+}
+
+.animate-spin-fast {
+  animation: spin-slow 1.2s linear infinite;
+}
+
+/* Subtle pulse animation */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+.telemetry-pulse {
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
