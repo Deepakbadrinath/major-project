@@ -60,14 +60,12 @@ e:\major project\
 ```powershell
 python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
-API Documentation is available at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
 ### 2. Launch React Frontend
 ```powershell
 cd frontend
 npm run dev
 ```
-Open your browser at: [http://localhost:5173](http://localhost:5173)
+run in localhost
 
 ### 3. Flash ESP32 Firmware
 1. Open `firmware/esp32_smart_classroom.ino` in Arduino IDE.
