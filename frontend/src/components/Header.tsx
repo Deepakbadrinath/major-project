@@ -20,6 +20,7 @@ import {
 import type { NavTab } from './Sidebar';
 
 export interface HeaderProps {
+  activeTab: NavTab;
   mode: string;
   onModeToggle: () => void;
   esp32Connected: boolean;
@@ -43,6 +44,7 @@ interface NotificationItem {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  activeTab,
   mode,
   onModeToggle,
   esp32Connected,
@@ -248,30 +250,32 @@ export const Header: React.FC<HeaderProps> = ({
         </button>
 
         {/* Global Mode Switcher Pill */}
-        <div className="flex items-center bg-white p-1 rounded-full border border-gray-200/90 shadow-xs">
-          <button
-            onClick={onModeToggle}
-            className={`px-3 py-1 text-xs font-bold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${
-              mode === 'AUTOMATIC'
-                ? 'bg-teal-600 text-white shadow-xs'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5" />
-            AUTOMATIC (AI)
-          </button>
-          <button
-            onClick={onModeToggle}
-            className={`px-3 py-1 text-xs font-bold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${
-              mode === 'MANUAL'
-                ? 'bg-amber-600 text-white shadow-xs'
-                : 'text-gray-500 hover:text-gray-900'
-            }`}
-          >
-            <Sliders className="w-3.5 h-3.5" />
-            MANUAL OVERRIDE
-          </button>
-        </div>
+        {activeTab !== 'overview' && (
+          <div className="flex items-center bg-white p-1 rounded-full border border-gray-200/90 shadow-xs">
+            <button
+              onClick={onModeToggle}
+              className={`px-3 py-1 text-xs font-bold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${
+                mode === 'AUTOMATIC'
+                  ? 'bg-teal-600 text-white shadow-xs'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              AUTOMATIC (AI)
+            </button>
+            <button
+              onClick={onModeToggle}
+              className={`px-3 py-1 text-xs font-bold rounded-full transition-all flex items-center gap-1.5 cursor-pointer ${
+                mode === 'MANUAL'
+                  ? 'bg-amber-600 text-white shadow-xs'
+                  : 'text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <Sliders className="w-3.5 h-3.5" />
+              MANUAL OVERRIDE
+            </button>
+          </div>
+        )}
 
         {/* Live Status Pill */}
         <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200/80 rounded-full px-3 py-1.5 text-xs font-bold text-emerald-700 shadow-xs">

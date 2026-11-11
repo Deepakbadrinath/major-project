@@ -230,6 +230,7 @@ export function App() {
         <div className="p-6 lg:p-8 space-y-6 max-w-[1600px] w-full mx-auto">
           {/* Top Header */}
           <Header
+            activeTab={activeTab}
             mode={systemState.mode}
             onModeToggle={handleModeToggle}
             esp32Connected={systemState.esp32_connected}
